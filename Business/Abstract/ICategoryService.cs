@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Business.Abstrack
 {
-    public interface IProductService
+    public interface ICategoryService
     {
-        List<Product> GetAll();
-        List<Product> GetAllByCategoryId(int id);
-        List<Product> GetByUnitPrice(decimal min, decimal max);
+        List<Category> GetAll();
+        Category GetById(int categoryId);
 
     }
 }

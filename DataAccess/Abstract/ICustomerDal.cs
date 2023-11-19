@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.DataAccess;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstrack
 {
-    public interface ICategoryDal:IEntityRepository<Category>
+    public interface ICustomerDal:IEntityRepository<Customer>
     {
-        
     }
 }
