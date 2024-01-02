@@ -1,15 +1,22 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstrack;
 using Business.Concrete;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstrack;
 using DataAccess.Concrete.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IProductService, ProductManager>();
-builder.Services.AddSingleton<IProductDal,EfProductDal>();
+// Autofac Configuration
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
 
-builder.Services.AddSingleton<ICategoryService, CategoryManager>();
-builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
+
+//builder.Services.AddSingleton<IProductService, ProductManager>();
+//builder.Services.AddSingleton<IProductDal,EfProductDal>();
+
+//builder.Services.AddSingleton<ICategoryService, CategoryManager>();
+//builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
 
 // Add services to the container.
 
